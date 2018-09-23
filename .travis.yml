@@ -1,0 +1,8 @@
+install:
+  # this also installs dev-dependencies, i.e. pkg
+  - npm install
+build:
+	# TODO: public-packages are packages which don’t specify a open license in
+  # their package.json. We should probably bug upstream about this …
+  - ./node_modules/.bin/pkg --targets latest-linux-armv7 --no-bytecode --public --public-packages=exif-parser,omggif,trim .
+
