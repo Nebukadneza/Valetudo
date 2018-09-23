@@ -1,0 +1,22 @@
+language: node_js
+node_js:
+- '9'
+dist: trusty
+sudo: true
+
+install:
+- npm install
+
+script:
+- "./node_modules/.bin/pkg --targets latest-linux-armv7 --no-bytecode --public-packages=exif-parser,omggif,trim,prettycron
+  ."
+
+deploy:
+  provider: releases
+  api_key:
+    secure: YEUPwFDRcC7k0Z8bLU6GJtzvdq5CX7xuadUE2Tp6P3mH2GUDDh8cM1em84iMeG84FcAd9Vg88kSnESrqtRtVozQEGAkYst4gdpgh1I0EllnkaK6KoezT7JnFtScKWiea15xXIajPjlppxCpPMKxgu36VtuLc0Dabe+tlz4dhnYE7R523Xbh/H3uiERL6jhCX8zIfgcbGIoXjugYbmQ5QNTASGyDTHI+H7OzwGnVi2s+YPijG915VqVD2pd/mD4plIiW0sUyPfy/DD4PTN7m7GyXpjCpd94dxbCtaoYnrcgrjt50pAWKWG8w4edn3XmUUMATp0dpzG6oIHYw24fNkPq1+vPXSeGnY/g+rMf/xt3quhKqMSkJOsDzf9ebjbtb/mLDye1MaNTbejA/XpYj2+LnaZBWb/GEmXn7uS5Dtb79CvemFyAniD4TAHEL7KRykAjGMExlszuN3rNPC5vSlCmhZgTDCAkO7HpWJsS71Chchp52JqIwd+HuMVuf6IGhEmpgjVH0vNeik2jsILBH1LmK8183Fvl0r7ax8g2fHErrFRt4vHfqHZk4C4iiBFBuhvC+5dLkJmr7PJQEJllXguGNH4bfGt4OyBs/cRZ1GNr4vqNVjUcngOTB1zIcEwJMRr0pMy/h5syVMFYqo+9VJCm7EKyoSv4m79L33+JDbBfQ=
+  file: "valetudo"
+  skip_cleanup: true
+  on:
+    branch: travis_builds
+    tags: true
